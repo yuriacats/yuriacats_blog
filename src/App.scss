@@ -1,0 +1,16 @@
+@import 'src/index';
+header,footer{
+  width:100vw;
+  height:100px;
+  background-color:#5b8ccc;
+  text-align: center;
+  color:$Base-color;
+  p{
+    padding:10px 10px 0;
+  }
+}
+footer{
+  position:absolute;
+  bottom:0;
+  height:50px;
+}
