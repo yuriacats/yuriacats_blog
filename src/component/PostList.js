@@ -2,10 +2,14 @@ import '../PostList.scss';
 import axios from 'axios';
 import React, { useState , useEffect} from 'react';
 
-
+const TagList =(props) =>{
+    return(
+        <p className="tags">{props.tag}</p>
+    )
+}
 
 const PostContent = () =>{
-    const getdata =   [
+    const getdata2 =   [
     {
         "id": 1,
         "title": "hogehoge",
@@ -20,29 +24,35 @@ const PostContent = () =>{
         "tags": ["tag1","tag2","tag3"],
         "date":20200406
     }];
-    const[data,setData]=useState({this:[]})
-    useEffect(async () => {
-        const result =await axios('./timeline.json');
-        setData(result.data);
-    });
+
+    const[getdata,setData]=useState({this:[]})
+    useEffect(() => {
+        const getData = async () => {
+            const response = await axios.get('./timeline.json');
+            setData(response.data);
+        }
+        getData();
+    },[]);
 
 
-return(
-    getdata.map(item =>(
-        <div className={"blog-content"}>
-            <div className={"ogp-image"}>
-                <img src={item.ogpimg}/>
-            </div>
-            <div className={"text-content"}>
-                <div className="tag-content">
-                    {item.tags.map(tag =>(<p className="tags">{tag}</p>))}
+    if (!getdata) return <>Loading...</>;
+    return(
+        getdata.map(item =>(
+            <div className={"blog-content"}>
+                <div className={"ogp-image"}>
+                    <img src={item.ogpimg}/>
                 </div>
-                <h2 className={"blog-titles"}>{item.title}</h2>
-                <p className={"date"}>{item.date}</p>
+                <div className={"text-content"}>
+                    <div className="tag-content">
+                        <p>仮機能です</p>
+                    </div>
+                    <h2 className={"blog-titles"}>{item.title}</h2>
+                    <p className={"date"}>{item.date}</p>
+                </div>
             </div>
-        </div>
-    )))
-}
+        )))
+        }
+
 const PostList =()=>(
     <section className="left-content">
         <PostContent/>
