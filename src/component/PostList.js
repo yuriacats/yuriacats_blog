@@ -9,38 +9,25 @@ const TagList =(props) =>{
 }
 
 const PostContent = () =>{
-    const getdata2 =   [
-    {
-        "id": 1,
-        "title": "hogehoge",
-        "ogpimg": "https://pbs.twimg.com/profile_images/1272504163427971073/hCPMkUs5_400x400.jpg",
-        "tags": ["tag1","tag2","tag3"],
-        "date":20200406
-    },
-    {
-        "id": 2,
-        "title": "hogehoge2",
-        "ogpimg": "https://pbs.twimg.com/profile_images/1272504163427971073/hCPMkUs5_400x400.jpg",
-        "tags": ["tag1","tag2","tag3"],
-        "date":20200406
-    }];
-
-    const[getdata,setData]=useState({this:[]})
+    const[getdata,setData]=useState(null)
     useEffect(() => {
-        const getData = async () => {
-            const response = await axios.get('./timeline.json');
-            setData(response.data);
-        }
-        getData();
+        let json={};
+        axios.get('./timeline.json').then((res) => {
+            json = res;
+            setData(json.data);
+        }).catch((err) =>{
+            //error処理書く
+            })
     },[]);
 
 
     if (!getdata) return <>Loading...</>;
+    console.log(getdata);
     return(
-        getdata.map(item =>(
+        getdata.posts.map(item =>(
             <div className={"blog-content"}>
                 <div className={"ogp-image"}>
-                    <img src={item.ogpimg}/>
+                    <img src={item.ogpimg} />
                 </div>
                 <div className={"text-content"}>
                     <div className="tag-content">
