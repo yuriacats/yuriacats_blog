@@ -2,10 +2,10 @@ import '../PostList.scss';
 import axios from 'axios';
 import React, { useState , useEffect} from 'react';
 
-const TagList =(props) =>{
+const TagList =() =>{
     return(
-        <p className="tags">{props.tag}</p>
-    )
+        <p className="tags">tags</p>
+        )
 }
 
 const PostContent = () =>{
@@ -31,7 +31,7 @@ const PostContent = () =>{
                 </div>
                 <div className={"text-content"}>
                     <div className="tag-content">
-                        <p>仮機能です</p>
+                        <TagList />
                     </div>
                     <h2 className={"blog-titles"}>{item.title}</h2>
                     <p className={"date"}>{item.date}</p>
