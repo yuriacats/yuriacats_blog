@@ -1,12 +1,15 @@
 @import "src/index";
 .left-content{
-  padding:20px;
+  padding: 20px 20px 50px;
   display: flex;
   flex-wrap:wrap;
   justify-content: flex-start;
   align-items: stretch;
 }
-
+.post-content{
+  padding: 20px 20px 50px;
+  display: block;
+}
 .blog-content{
   width:300px;
   height:300px;
