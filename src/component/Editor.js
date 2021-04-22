@@ -26,7 +26,6 @@ const Editor = () => {
         <textarea value={TextData.value} onChange={handleInputChange}/>
         <ReactMarkdown
             renderers={renderers}
-            plugins={[math]}
         >
             {TextData.value}
         </ReactMarkdown>
