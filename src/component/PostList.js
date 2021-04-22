@@ -1,6 +1,7 @@
 import '../PostList.scss';
 import axios from 'axios';
 import React, { useState , useEffect} from 'react';
+import {NavLink} from "react-router-dom";
 
 const TagList =() =>{
     return(
@@ -25,9 +26,10 @@ const PostContent = () =>{
     console.log(getdata);
     return(
         getdata.posts.map(item =>(
+            <NavLink to={"/post/"+item.id} activeStyle={{ textDecoration: 'none' }} >
             <div className={"blog-content"}>
                 <div className={"ogp-image"}>
-                    <img src={item.ogpimg} />
+                    <img src={item.ogpimg} alt="ogp-images" />
                 </div>
                 <div className={"text-content"}>
                     <div className="tag-content">
@@ -37,6 +39,7 @@ const PostContent = () =>{
                     <p className={"date"}>{item.date}</p>
                 </div>
             </div>
+            </NavLink>
         )))
         }
 

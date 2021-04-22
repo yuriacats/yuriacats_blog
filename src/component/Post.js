@@ -4,13 +4,22 @@ import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router-dom'
 import Tex from '@matejmazur/react-katex'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
-import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism'
+import {nord} from 'react-syntax-highlighter/dist/esm/styles/prism'
+import math from 'remark-math'
 
 const Post = () => {
-    const [getData,setData] =useState(null)
+    const [getData,setData] =useState(null);
     const { id } = useParams();
+    const renderers = {
+        inlineMath: ({value}) => <Tex math={value} />,
+        math: ({value}) => <Tex block math={value} />,
+        code: ({language, value}) => {
+            return <SyntaxHighlighter style={nord} language={language} children={value} />
+        }
+    }
     useEffect(() => {
-        axios.get('./post1.json').then((res) => {
+        const url ='/post'+id+'.json'
+        axios.get(url).then((res) => {
             setData(res.data);
         }).catch((err) => {
             //error
@@ -21,7 +30,10 @@ const Post = () => {
     if (getData == null) return <>Loading...</>;
     return(<section className={'post-content'}>
             <h2>{getData.title}</h2>
-            <ReactMarkdown>
+            <ReactMarkdown
+                renderers={renderers}
+                plugins={[math]}
+            >
                 {getData.post}
             </ReactMarkdown>
 
