@@ -22,7 +22,7 @@ const Post = () => {
         axios.get(url).then((res) => {
             setData(res.data);
         }).catch((err) => {
-            //error
+            setData(null)
         })
     },[]);
     console.log(getData);
