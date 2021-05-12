@@ -6,7 +6,6 @@ import Footer from "../component/Footer";
 const PostListView = () =>(<>
     <Header/>
     <Editor/>
-    <Footer/>
 </>)
 
 export default PostListView;

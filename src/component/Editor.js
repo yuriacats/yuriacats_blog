@@ -4,6 +4,7 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {nord} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import math from 'remark-math'
 import Tex from "@matejmazur/react-katex"
+import dayjs from 'dayjs'
 
 const Editor = () => {
     const [TextData,setData] = useState({value:" $X_C = \\dfrac{1}{j \\omega C}$"});
@@ -16,9 +17,20 @@ const Editor = () => {
     }
 
     function handleInputChange(e) {
-        console.log(e);
+        //console.log(e);
         setData({value: e.target.value});
 
+    }
+    function editOutputTest(){
+        let today = dayjs().format("YYYYMMDD");
+        console.log(JSON.stringify({"id": 1617844570,
+            "update": today,
+            "create": today,
+            "tags": [],
+            "title": "test",
+            "prevPost": null,
+            "nextPost": null,
+            "post":TextData.value}))
     }
 
     return(
@@ -29,6 +41,7 @@ const Editor = () => {
         >
             {TextData.value}
         </ReactMarkdown>
+            <button type="submit" onClick={editOutputTest}>Submit</button>
         </div>
         )
 }
