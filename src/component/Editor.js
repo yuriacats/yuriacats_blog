@@ -36,8 +36,10 @@ const Editor = () => {
     return(
         <div>
         <textarea value={TextData.value} onChange={handleInputChange}/>
+            //TODO:もうちょっとマシなテキストエリアに固定する。左右デザインにする。
         <ReactMarkdown
             renderers={renderers}
+            plugins={[math]}
         >
             {TextData.value}
         </ReactMarkdown>

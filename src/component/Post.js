@@ -18,8 +18,11 @@ const Post = () => {
         }
     }
     useEffect(() => {
-        const url ='/post'+id+'.json'
+        const url ='https://do6o5fdxtf.execute-api.ap-northeast-1.amazonaws.com/Prod/post'
+        const url2 ='/post'+id+'.json'
+        //TODO: ルーティングの実装(post/{id}で目的のページを受け取る)ができたら消す。
         axios.get(url).then((res) => {
+            //TODO: res.dataがErrorを返してきたとき(404エラー)404ページへリダイレクトさせる
             setData(res.data);
         }).catch((err) => {
             setData(null)
@@ -30,6 +33,7 @@ const Post = () => {
     if (getData == null) return <>Loading...</>;
     return(<section className={'post-content'}>
             <h2>{getData.title}</h2>
+            <p className={'post-read-time'}>この記事は{(getData.post.length/600).toFixed()}分で読めます。</p>
             <ReactMarkdown
                 renderers={renderers}
                 plugins={[math]}

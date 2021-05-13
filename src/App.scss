@@ -2,7 +2,7 @@
 header,footer{
   width:100vw;
   height:100px;
-  background-color:#5b8ccc;
+  background-color:$Blue;
   text-align: center;
   color:$Base-color;
   p{
@@ -18,4 +18,39 @@ annotation{
   display: none;
 }
 
+.post-read-time {
+  display: block;
+  position: relative;
+  height: 50px;/*リボンの高さ*/
+  line-height: 50px;/*リボンの高さ*/
+  text-align: center;
+  padding: 0 30px;/*横の大きさ*/
+  font-size: 18px;/*文字の大きさ*/
+  background:   $Blue;/*塗りつぶし色*/
+  color: $white;/*文字色*/
+  box-sizing: border-box;
+}
 
+.post-read-time:before, .post-read-time:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.post-read-time:before {
+  top: 0;
+  left: 0;
+  border-width: 25px 0px 25px 15px;
+  border-color: transparent transparent transparent $Base-color;
+  border-style: solid;
+}
+
+.post-read-time:after {
+  top: 0;
+  right: 0;
+  border-width: 25px 15px 25px 0px;
+  border-color: transparent $Base-color transparent transparent;
+  border-style: solid;
+}
