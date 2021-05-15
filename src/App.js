@@ -11,10 +11,10 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route path="/post/:id" component={PostView}/>
-                    <Route exact path="/" component={PostListView}/>
-                    <Route exact path="/edit" component={EditorView}/>
-                    <Redirect to="/"/>
+                    <Route path="yuriacats_blog/post/:id" component={PostView}/>
+                    <Route exact path="/yuriacats_blog" component={PostListView}/>
+                    <Route exact path="yuriacats_blog/edit" component={EditorView}/>
+                    <Redirect to="/yuriacats_blog"/>
                 </Switch>
             </BrowserRouter>
         );
