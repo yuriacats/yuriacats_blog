@@ -13,7 +13,7 @@ const PostContent = () =>{
     const[getdata,setData]=useState(null)
     useEffect(() => {
         let json={};
-        axios.get('./timeline.json').then((res) => {
+        axios.get('${process.env.PUBLIC_URL}/timeline.json').then((res) => {
             json = res;
             setData(json.data);
         }).catch((err) =>{
