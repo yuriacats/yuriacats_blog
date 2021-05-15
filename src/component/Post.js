@@ -19,7 +19,6 @@ const Post = () => {
     }
     useEffect(() => {
         const url ='https://g7bdlrmjyi.execute-api.ap-northeast-1.amazonaws.com/Prod/post/'+id
-        const url2 ='/post'+id+'.json'
         //TODO: ルーティングの実装(post/{id}で目的のページを受け取る)ができたら消す。
         axios.get(url).then((res) => {
             //TODO: res.dataがErrorを返してきたとき(404エラー)404ページへリダイレクトさせる
