@@ -18,7 +18,7 @@ const Post = () => {
         }
     }
     useEffect(() => {
-        
+
         const url ='https://g7bdlrmjyi.execute-api.ap-northeast-1.amazonaws.com/Prod/post/'+id
         //TODO: ルーティングの実装(post/{id}で目的のページを受け取る)ができたら消す。
         axios.get(url).then((res) => {
@@ -27,7 +27,7 @@ const Post = () => {
         }).catch((err) => {
             setData(null)
         })
-    },[]);
+    },[id]);
     if (getData == null) return <>Loading...</>;
     return(<section className={'post-content'}>
             <h2>{getData.title}</h2>
