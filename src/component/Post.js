@@ -27,8 +27,6 @@ const Post = () => {
             setData(null)
         })
     },[]);
-    console.log(getData);
-    console.log(id);
     if (getData == null) return <>Loading...</>;
     return(<section className={'post-content'}>
             <h2>{getData.title}</h2>
