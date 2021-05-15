@@ -9,6 +9,7 @@ import math from 'remark-math'
 
 const Post = () => {
     const [getData,setData] =useState(null);
+    const { id } = useParams();
     const renderers = {
         inlineMath: ({value}) => <Tex math={value} />,
         math: ({value}) => <Tex block math={value} />,
@@ -17,7 +18,7 @@ const Post = () => {
         }
     }
     useEffect(() => {
-        const { id } = useParams();
+        
         const url ='https://g7bdlrmjyi.execute-api.ap-northeast-1.amazonaws.com/Prod/post/'+id
         //TODO: ルーティングの実装(post/{id}で目的のページを受け取る)ができたら消す。
         axios.get(url).then((res) => {
