@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState , useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 
+
 const TagList =() =>{
     return(
         <p className="tags">tags</p>
@@ -13,7 +14,7 @@ const PostContent = () =>{
     const[getdata,setData]=useState(null)
     useEffect(() => {
         let json={};
-        axios.get('${process.env.PUBLIC_URL}/timeline.json').then((res) => {
+        axios.get(process.env.PUBLIC_URL+'/timeline.json').then((res) => {
             json = res;
             setData(json.data);
         }).catch((err) =>{
