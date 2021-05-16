@@ -23,7 +23,7 @@ const Editor = () => {
     }
     function editOutputTest(){
         let today = dayjs().format("YYYYMMDD");
-        console.log(JSON.stringify({"id": 1617844570,
+        console.log(JSON.stringify({"id": Date.now(),
             "update": today,
             "create": today,
             "tags": [],
@@ -36,7 +36,7 @@ const Editor = () => {
     return(
         <div>
         <textarea value={TextData.value} onChange={handleInputChange}/>
-               
+
         <ReactMarkdown
             renderers={renderers}
             plugins={[math]}
