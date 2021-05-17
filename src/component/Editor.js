@@ -37,7 +37,7 @@ const Editor = () => {
     }
 
     return(
-        <div>
+        <div className={'content'}>
         <textarea className={"text-area"} value={TextData.value} onChange={handleInputChange}/>
             <button type="submit" onClick={editOutputTest}>Submit</button>
         <ReactMarkdown
