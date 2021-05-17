@@ -38,15 +38,15 @@ const Editor = () => {
 
     return(
         <div>
-        <textarea value={TextData.value} onChange={handleInputChange}/>
-
+        <textarea className={"text-area"} value={TextData.value} onChange={handleInputChange}/>
+            <button type="submit" onClick={editOutputTest}>Submit</button>
         <ReactMarkdown
             renderers={renderers}
             plugins={[math]}
         >
             {TextData.value}
         </ReactMarkdown>
-            <button type="submit" onClick={editOutputTest}>Submit</button>
+
         </div>
         )
 }

@@ -45,7 +45,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "http://yuriacats.github.io/yuriacats_blog",
+  "homepage": "/",
   "name": "yuriacatsblog",
   "private": true,
   "scripts": {
