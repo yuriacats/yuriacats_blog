@@ -1,0 +1,18 @@
+version:1.0
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - 'nvm use "${VERSION_NODE_14}"'
+        - 'yarn install'
+    build:
+      commands:
+        -'yarn run build'
+  artifacts:
+    baseDrectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - 'node_modules/**/*'
+

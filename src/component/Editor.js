@@ -17,8 +17,11 @@ const Editor = () => {
     }
 
     function handleInputChange(e) {
-        //console.log(e);
-        setData({value: e.target.value});
+        let text=e.target.value
+        if(e.nativeEvent.inputType === 'insertLineBreak'){
+            //TODO Add '\'event
+        }
+        setData({value: text});
 
     }
     function editOutputTest(){
