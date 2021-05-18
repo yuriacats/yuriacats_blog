@@ -1,13 +1,36 @@
-import React,{ useState } from 'react'
+import React,{ useState ,useEffect} from 'react'
+import axios from 'axios';
 import ReactMarkdown from "react-markdown"
+import { useParams } from 'react-router-dom'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {nord} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import math from 'remark-math'
 import Tex from "@matejmazur/react-katex"
 import dayjs from 'dayjs'
+const Editor=() => {
+    const [getData,setData] =useState(null);
+    const { id } = useParams();
+    useEffect( () =>{
+        if (id){
+            const url ='https://g7bdlrmjyi.execute-api.ap-northeast-1.amazonaws.com/Prod/post/'+id
+            //TODO: ルーティングの実装(post/{id}で目的のページを受け取る)ができたら消す。
+            axios.get(url).then((res) => {
+                //TODO: res.dataがErrorを返してきたとき(404エラー)404ページへリダイレクトさせる
+                setData(res.data);
+            }).catch((err) => {
+                setData(null)
+            })
+        }
+    },[id])
+    if(!id ) return <><><Edit First_Text="$X_C = \dfrac{1}{j \omega C}$"/></></>
+    else if (getData == null) return <>Loading...</>;
+    return(
+        <><Edit First_Text={getData.post}/></>
+    )
+}
 
-const Editor = () => {
-    const [TextData,setData] = useState({value:" $X_C = \\dfrac{1}{j \\omega C}$"});
+const Edit = (e= '') => {
+    const [TextData,setData] = useState({value:e.First_Text});
     const renderers = {
         inlineMath: ({value}) => <Tex math={value} />,
         math: ({value}) => <Tex block math={value} />,
