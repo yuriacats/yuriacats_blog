@@ -14,7 +14,7 @@ const PostContent = () =>{
     const[getdata,setData]=useState(null)
     useEffect(() => {
         let json={};
-        axios.get(process.env.PUBLIC_URL+'/timeline.json').then((res) => {
+        axios.get('https://g7bdlrmjyi.execute-api.ap-northeast-1.amazonaws.com/Prod/').then((res) => {
             json = res;
             setData(json.data);
         }).catch((err) =>{
@@ -26,7 +26,7 @@ const PostContent = () =>{
     if (!getdata) return <>Loading...</>;
     console.log(getdata);
     return(
-        getdata.posts.map(item =>(
+        getdata.response_base.map(item =>(
             <NavLink to={"/post/"+item.id} activeStyle={{ textDecoration: 'none' }} >
             <div className={"blog-content"}>
                 <div className={"ogp-image"}>
