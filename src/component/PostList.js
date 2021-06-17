@@ -14,7 +14,7 @@ const PostContent = () =>{
     const[getdata,setData]=useState(null)
     useEffect(() => {
         let json={};
-        axios.get('https://g7bdlrmjyi.execute-api.ap-northeast-1.amazonaws.com/Prod/').then((res) => {
+        axios.get(' https://xh6db1kpg9.execute-api.ap-northeast-1.amazonaws.com/Prod').then((res) => {
             json = res;
             setData(json.data);
         }).catch((err) =>{
